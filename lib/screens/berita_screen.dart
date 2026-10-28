@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/berita_model.dart';
 import '../services/berita_service.dart';
+import 'package:intl/intl.dart';
 
 class BeritaScreen extends StatefulWidget {
   const BeritaScreen({super.key});
@@ -152,7 +153,7 @@ class _BeritaCard extends StatelessWidget {
   String _formatTanggal(String isoDate) {
     try {
       final date = DateTime.parse(isoDate).toLocal();
-      return '${date.day}/${date.month}/${date.year}  ${date.hour}:${date.minute.toString().padLeft(2, '0')}';
+      return '${DateFormat('EEEE, dd MMM yyyy HH:mm', 'id_ID').format(date)} WIB';
     } catch (_) {
       return isoDate;
     }
